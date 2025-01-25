@@ -1,0 +1,201 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body:before {
+  content: "Instagram: @_Iannfall";
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-weight: bold;
+  opacity: .5;
+  font-size: 10px;
+  z-index: 99999;
+}
+body {
+  background: #f8ede0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.box {
+
+}
+.buttonTop {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+}
+.buttonTop i {
+  font-size: 35px;
+  
+}
+.buttonBottom {
+  margin-top: 100px;
+  background: black;
+  height: 45px;
+  width: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+}
+.buttonBottom i {
+  font-size: 55px;
+  color: #f2f2f2;
+}
+.wrap {
+  padding: 25px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrap .top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.image {
+  width: 200px;
+  border-radius: 20px;
+  margin: 20px 0;
+}
+.mid {
+  display: flex-direction;
+  flex-direction: column;
+}
+.mid .number {
+  font-size: 75px;
+  margin: 15px 0;
+  transition: color 0.2s linear;
+  font-weight: bold;
+/*  background: blue;*/
+}
+.mid .Pcontent {
+  font-size: 13px;
+}
+.timeSetting.flex {
+  display: flex;
+}
+.timeSetting {
+  position: absolute;
+  z-index: 9999;
+  top: 50%;
+  left: 0;
+  transform: translate(0,-50%);
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+  background: #f1e7de;
+  opacity: 1;
+}
+.preset-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+}
+.wrapTime {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.midImg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.midImg p {
+  font-size: 13px;
+  margin-top: -10px;
+}
+.section1 {
+  width: 80%;
+}
+.section1 h2{
+  text-align: left;
+  margin-bottom: 30px;
+  font-size: 30px;
+}
+.section1 .pTime {
+  text-align: left;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.comment {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  gap: 10px;
+}
+.comment input {
+  border: none;
+  padding: 0px 10px;
+  width: 80%;
+  height: 100%;
+  background: black;
+  color: white;
+  outline: none;
+  border-radius: 8px;
+}
+.comment input::placeholder {
+  color: white;
+}
+.comment input::value {
+  color: white;
+}
+.buttonInput {
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: black;
+  height: 100%;
+  width: 20%;
+  border-radius: 8px;
+  padding: 0px 15px;
+}
+.buttonInput i {
+  color: white;
+  font-size: 25px;
+  
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.content .preset-button {
+  padding: 15px 40px;
+  border-radius: 10px;
+  background: black;
+  margin: 18px 0px;
+  color: white;
+}
+.backbutton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+}
+.backbutton i {
+  font-size: 35px;
+}

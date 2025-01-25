@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Timer | Iannfall</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        .hidden {
+            display: none;
+        }
+        
+    </style>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="box">
+    <div class="wrap">
+    <div class="buttonTop" id="change-time-button">
+      <i class="bx bx-timer"></i>
+    </div>
+    <div class="top">
+      <img id="animationGif" class="image" alt="animationGif" src="giphy.gif">
+      <img id="animationGif2" class="image" src="giphy4.gif" alt="animationGif2" style="display:none;">
+    </div>
+    <div class="mid">
+      <p id="timer" class="number">0.000</p>
+      <p id="Pcontent" class="Pcontent">Siap mulai hitung cepat?</p>
+    </div>
+    <div id="play-button" class="buttonBottom">
+      <i id="toggle" class="bx bx-play"></i>
+    </div>
+    
+    <audio id="alarm-sound" src="beep.mp3"></audio>
+  </div>
+    
+
+    <!-- Halaman Pengaturan Waktu -->
+    <div id="time-settings" class="hidden timeSetting">
+      
+      <div class="wrapTime">
+        
+        <div class="section1">
+          <h2>Pengaturan Waktu</h2>
+          <div class="midImg">
+            <img class="image" src="giphy3.gif" alt="animationGif4">
+            <p>Heehh... Masih kurang waktunya!?</p>
+          </div>
+          <p class="pTime">Ingatkan saya setiap: <span id="output">..</span> detik</p>
+        <div class="comment">
+          <input type="number" id="custom-time" min="1" placeholder="Mau berapa detik?">
+          <div id="save-time-button" class="buttonInput">
+            <i class="bx bx-right-arrow-alt"></i>
+          </div>
+        </div>
+        <div class="container">
+          <div class="content">
+            <div class="preset-button" data-time="10">10 Detik</div>
+            <div class="preset-button" data-time="15">15 Detik</div>
+            <div class="preset-button" data-time="20">20 Detik</div>
+          </div>
+          <div class="content">
+            <div class="preset-button" data-time="25">25 Detik</div>
+            <div class="preset-button" data-time="30">30 Detik</div>
+            <div class="preset-button" data-time="60">60 Detik</div>
+          </div>
+        </div>
+        </div>
+        
+        
+        <div class="backbutton" id="back-button">
+          <i class="bx bx-x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+    <script>
+        let time = 0;
+        let maxTime = 20; 
+        let timerInterval; 
+        const Pcontent = document.getElementById("Pcontent");
+        const animationGif = document.getElementById("animationGif");
+        const animationGif2 = document.getElementById("animationGif2");
+        const timerElement = document.getElementById("timer");
+        const toggle = document.getElementById("toggle");
+        const output = document.getElementById('output');
+        const alarmSound = document.getElementById("alarm-sound");
+        const playButton = document.getElementById("play-button");
+        const changeTimeButton = document.getElementById("change-time-button");
+        const timeSettings = document.getElementById("time-settings");
+        const saveTimeButton = document.getElementById("save-time-button");
+        const backButton = document.getElementById("back-button");
+        const customTimeInput = document.getElementById("custom-time");
+        const presetButtons = document.querySelectorAll(".preset-button");
+
+        const intervalStep = 10;
+
+        function startTimer() {
+            if (timerInterval) return;
+            playButton.disabled = true; 
+
+            timerInterval = setInterval(() => {
+                time += intervalStep / 1000;
+                timerElement.textContent = time.toFixed(3);
+                Pcontent.textContent = "YOSHHH!!!";
+                animationGif.style = "display:none;";
+                animationGif2.style = "display:block;";
+                
+                if (time >= maxTime - 5 && time < maxTime) {
+                    const progress = (time - (maxTime - 5)) / 5;
+                    const red = 255;
+                    const green = Math.floor(165 - 165 * progress);
+                    const blue = 0;
+                    timerElement.style.color = `rgb(${red}, ${green}, ${blue})`;
+                } else if (time < maxTime - 5) {
+                    timerElement.style.color = "black";
+                }
+                toggle.classList.remove('bx-play');
+                toggle.classList.add('bx-pause');
+
+                if (time >= maxTime) {
+                    alarmSound.play().catch((error) => console.error("Audio gagal diputar:", error));
+                    time = 0;
+                    timerElement.style.color = "black";
+                }
+            }, intervalStep);
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            playButton.disabled = false;
+            Pcontent.textContent = "Siap mulai hitung cepat?";
+            animationGif.style = "display:block;";
+                animationGif2.style = "display:none;";
+                toggle.classList.remove('bx-pause');
+                toggle.classList.add('bx-play'); 
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
